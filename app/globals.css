@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Color Palette - Light Mode */
+  /* Color Palette */
   --primary-blue: #1E3A8A;
   --cyan-accent: #06B6D4;
   --background: #ffffff;
@@ -21,27 +21,6 @@
   --footer-bg: #0f172a;
 }
 
-/* Dark Mode Variables */
-.dark {
-  --primary-blue: #3B82F6;
-  --cyan-accent: #22D3EE;
-  --background: #0f172a;
-  --background-alt: #1e293b;
-  --foreground: #f1f5f9;
-  --foreground-muted: #94a3b8;
-  --border-color: #334155;
-
-  /* Card Colors */
-  --card-bg: #1e293b;
-  --card-border: #334155;
-
-  /* Navbar */
-  --navbar-bg: rgba(15, 23, 42, 0.95);
-
-  /* Footer */
-  --footer-bg: #020617;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -50,13 +29,9 @@
   --font-sans: var(--font-inter);
 }
 
-/* Smooth Scrolling & Theme Transition */
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
 }
 
 body {
@@ -192,38 +167,6 @@ body {
 
 .navbar.scrolled {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode adjustments */
-.dark .card-hover:hover {
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-}
-
-.dark .grid-pattern {
-  background-image:
-    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--background-alt);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background: var(--cyan-accent);
-  color: white;
-  border-color: var(--cyan-accent);
-  transform: rotate(15deg);
 }
 
 /* Grid Pattern Background */
