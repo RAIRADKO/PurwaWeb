@@ -15,6 +15,7 @@ export default function Home() {
               <a href="#layanan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Layanan</a>
               <a href="#keunggulan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Keunggulan</a>
               <a href="#workflow" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Alur Kerja</a>
+              <a href="#harga" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Harga</a>
               <a href="#tentang" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Tentang Kami</a>
               <a href="#kontak" className="btn-primary px-6 py-2.5 rounded-full font-semibold">
                 Hubungi Kami
@@ -261,6 +262,251 @@ export default function Home() {
               <p className="text-slate-600 text-sm">Dukungan berkelanjutan pasca peluncuran</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricelist */}
+      <section id="harga" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Paket Harga</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
+              Pilih paket yang sesuai dengan kebutuhan dan budget bisnis Anda. Semua paket sudah termasuk konsultasi gratis.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {/* Starter */}
+            <div className="pricing-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col">
+              <div className="mb-6">
+                <div className="icon-container w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">Starter</h3>
+                <p className="text-slate-500 text-sm mt-1">Cocok untuk personal & UMKM</p>
+              </div>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                </div>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 500K</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Landing page 1 halaman
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Desain responsif (mobile-friendly)
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Konten statis (teks & gambar)
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Formulir kontak
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Integrasi WhatsApp
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  1x revisi desain
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Waktu pengerjaan 3-5 hari
+                </li>
+              </ul>
+              <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Starter" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
+                Pilih Starter
+              </a>
+            </div>
+
+            {/* Professional - Popular */}
+            <div className="pricing-card pricing-popular bg-white rounded-2xl p-8 border-2 shadow-lg flex flex-col relative" style={{ borderColor: '#06B6D4' }}>
+              <div className="pricing-badge absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-sm font-semibold" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
+                Populer
+              </div>
+              <div className="mb-6">
+                <div className="icon-container w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">Professional</h3>
+                <p className="text-slate-500 text-sm mt-1">Untuk bisnis berkembang</p>
+              </div>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                </div>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 1.5 Jt</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Website hingga 5 halaman
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Desain UI/UX custom
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  CMS untuk kelola konten
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  SEO dasar (meta tags & sitemap)
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Integrasi media sosial
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Google Analytics
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  3x revisi desain
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Support 1 bulan gratis
+                </li>
+              </ul>
+              <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Professional" target="_blank" rel="noopener noreferrer" className="btn-primary w-full py-3 rounded-xl font-semibold text-center block">
+                Pilih Professional
+              </a>
+            </div>
+
+            {/* Business */}
+            <div className="pricing-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col">
+              <div className="mb-6">
+                <div className="icon-container w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">Business</h3>
+                <p className="text-slate-500 text-sm mt-1">Untuk bisnis skala menengah</p>
+              </div>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                </div>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 3.5 Jt</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Website / Aplikasi Web dinamis
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Hingga 10 halaman
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Database & sistem login
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Admin dashboard
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  API integrasi pihak ketiga
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  SEO lanjutan & optimasi performa
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  5x revisi desain
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Support 3 bulan gratis
+                </li>
+              </ul>
+              <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Business" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
+                Pilih Business
+              </a>
+            </div>
+
+            {/* Enterprise */}
+            <div className="pricing-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col">
+              <div className="mb-6">
+                <div className="icon-container w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">Enterprise</h3>
+                <p className="text-slate-500 text-sm mt-1">Solusi lengkap & kustom</p>
+              </div>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm font-medium text-slate-500">Harga</span>
+                </div>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Custom</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Aplikasi web / mobile / desktop
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Arsitektur & fitur fully custom
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Sistem kompleks (ERP, CRM, dll)
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Integrasi payment gateway
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Dedicated project manager
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Revisi unlimited selama development
+                </li>
+                <li className="flex items-start gap-2 text-slate-600 text-sm">
+                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                  Support & maintenance 6 bulan
+                </li>
+              </ul>
+              <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Enterprise" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
+                Hubungi Kami
+              </a>
+            </div>
+
+          </div>
+          <p className="text-center text-slate-500 text-sm mt-10">
+            * Harga dapat disesuaikan tergantung kompleksitas dan fitur tambahan. Konsultasi gratis untuk estimasi lebih detail.
+          </p>
         </div>
       </section>
 
