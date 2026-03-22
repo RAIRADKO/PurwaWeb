@@ -1,6 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { translations, Lang } from "./translations";
 
 export default function Home() {
+  const [lang, setLang] = useState<Lang>("id");
+
+  const t = (key: keyof typeof translations) => translations[key][lang];
+
+  const toggleLang = () => setLang(lang === "id" ? "en" : "id");
+
   return (
     <div className="min-h-screen">
       {/* Navbar */}
@@ -12,21 +22,45 @@ export default function Home() {
               <span className="text-2xl font-bold" style={{ color: '#1E3A8A' }}>Purwa<span style={{ color: '#06B6D4' }}>Web</span></span>
             </a>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#layanan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Layanan</a>
-              <a href="#keunggulan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Keunggulan</a>
-              <a href="#workflow" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Alur Kerja</a>
-              <a href="#harga" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Harga</a>
-              <a href="#tentang" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">Tentang Kami</a>
+              <a href="#layanan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_layanan")}</a>
+              <a href="#keunggulan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_keunggulan")}</a>
+              <a href="#workflow" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_workflow")}</a>
+              <a href="#harga" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_harga")}</a>
+              <a href="#tentang" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_tentang")}</a>
               <a href="#kontak" className="btn-primary px-6 py-2.5 rounded-full font-semibold">
-                Hubungi Kami
+                {t("nav_kontak")}
               </a>
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLang}
+                className="lang-toggle flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#06B6D4] transition-all text-sm font-semibold"
+                aria-label="Toggle Language"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+                <span className={`lang-label ${lang === "id" ? "active" : ""}`}>ID</span>
+                <span className="text-slate-300">|</span>
+                <span className={`lang-label ${lang === "en" ? "active" : ""}`}>EN</span>
+              </button>
             </div>
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2" aria-label="Menu">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            <div className="flex items-center gap-3 md:hidden">
+              <button
+                onClick={toggleLang}
+                className="lang-toggle flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-slate-200 text-xs font-semibold"
+                aria-label="Toggle Language"
+              >
+                <span className={`lang-label ${lang === "id" ? "active" : ""}`}>ID</span>
+                <span className="text-slate-300">|</span>
+                <span className={`lang-label ${lang === "en" ? "active" : ""}`}>EN</span>
+              </button>
+              <button className="p-2" aria-label="Menu">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -37,18 +71,17 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white animate-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Solusi Digital Terpercaya untuk Web, Mobile, dan Desktop
+                {t("hero_title")}
               </h1>
               <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                Partner teknologi profesional yang menghadirkan solusi aplikasi berkualitas tinggi,
-                scalable, dan didukung tim berpengalaman.
+                {t("hero_subtitle")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="#kontak" className="btn-primary px-8 py-4 rounded-full font-semibold text-lg text-center">
-                  Konsultasi Gratis
+                  {t("hero_cta")}
                 </a>
                 <a href="#layanan" className="btn-outline px-8 py-4 rounded-full font-semibold text-lg text-center">
-                  Lihat Layanan
+                  {t("hero_cta2")}
                 </a>
               </div>
             </div>
@@ -59,7 +92,7 @@ export default function Home() {
                     <svg className="w-32 h-32 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                     </svg>
-                    <p className="text-2xl font-semibold">Kualitas Terjamin</p>
+                    <p className="text-2xl font-semibold">{t("hero_quality")}</p>
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-cyan-400/30 backdrop-blur-sm"></div>
@@ -74,9 +107,9 @@ export default function Home() {
       <section id="layanan" className="py-24 bg-white grid-pattern">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Layanan Kami</h2>
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("layanan_title")}</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
-              Kami menyediakan solusi teknologi lengkap untuk membantu bisnis Anda berkembang di era digital
+              {t("layanan_subtitle")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -87,8 +120,8 @@ export default function Home() {
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Web Development</h3>
-              <p className="text-slate-600">Website responsif dan aplikasi web modern dengan teknologi terkini</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("layanan_web")}</h3>
+              <p className="text-slate-600">{t("layanan_web_desc")}</p>
             </div>
 
             {/* Mobile App */}
@@ -98,8 +131,8 @@ export default function Home() {
                   <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Mobile App Development</h3>
-              <p className="text-slate-600">Aplikasi mobile iOS & Android yang intuitif dan performa tinggi</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("layanan_mobile")}</h3>
+              <p className="text-slate-600">{t("layanan_mobile_desc")}</p>
             </div>
 
             {/* Desktop App */}
@@ -109,8 +142,8 @@ export default function Home() {
                   <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Desktop Application</h3>
-              <p className="text-slate-600">Aplikasi desktop cross-platform yang powerful dan reliable</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("layanan_desktop")}</h3>
+              <p className="text-slate-600">{t("layanan_desktop_desc")}</p>
             </div>
 
             {/* Maintenance */}
@@ -120,8 +153,8 @@ export default function Home() {
                   <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Maintenance & Support</h3>
-              <p className="text-slate-600">Dukungan teknis berkelanjutan dan pemeliharaan sistem</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("layanan_maintenance")}</h3>
+              <p className="text-slate-600">{t("layanan_maintenance_desc")}</p>
             </div>
           </div>
         </div>
@@ -131,54 +164,50 @@ export default function Home() {
       <section id="keunggulan" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Mengapa Memilih Kami?</h2>
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("keunggulan_title")}</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
-              Keunggulan yang menjadikan PurwaWeb sebagai partner teknologi terpercaya
+              {t("keunggulan_subtitle")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Tim Berpengalaman */}
             <div className="text-center p-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
                 <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Tim Berpengalaman</h3>
-              <p className="text-slate-600">Developer profesional dengan pengalaman bertahun-tahun di industri</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("keunggulan_tim")}</h3>
+              <p className="text-slate-600">{t("keunggulan_tim_desc")}</p>
             </div>
 
-            {/* Teknologi Terkini */}
             <div className="text-center p-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
                 <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Teknologi Terkini</h3>
-              <p className="text-slate-600">Menggunakan stack teknologi modern dan best practices terbaru</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("keunggulan_tech")}</h3>
+              <p className="text-slate-600">{t("keunggulan_tech_desc")}</p>
             </div>
 
-            {/* Proses Terstruktur */}
             <div className="text-center p-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
                 <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Proses Kerja Terstruktur</h3>
-              <p className="text-slate-600">Metodologi pengembangan yang jelas dan terukur</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("keunggulan_proses")}</h3>
+              <p className="text-slate-600">{t("keunggulan_proses_desc")}</p>
             </div>
 
-            {/* Support Berkelanjutan */}
             <div className="text-center p-6">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
                 <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">Support Berkelanjutan</h3>
-              <p className="text-slate-600">Dukungan teknis dan maintenance setelah project selesai</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{t("keunggulan_support")}</h3>
+              <p className="text-slate-600">{t("keunggulan_support_desc")}</p>
             </div>
           </div>
         </div>
@@ -188,78 +217,70 @@ export default function Home() {
       <section id="workflow" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Alur Kerja Kami</h2>
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("workflow_title")}</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
-              Proses pengembangan yang terstruktur untuk hasil optimal
+              {t("workflow_subtitle")}
             </p>
           </div>
           <div className="grid md:grid-cols-5 gap-4">
-            {/* Step 1 */}
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl" style={{ background: '#1E3A8A' }}>
                 1
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Konsultasi & Analisis</h3>
-              <p className="text-slate-600 text-sm">Memahami kebutuhan dan tujuan bisnis Anda</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">{t("workflow_step1")}</h3>
+              <p className="text-slate-600 text-sm">{t("workflow_step1_desc")}</p>
             </div>
 
-            {/* Arrow */}
             <div className="hidden md:flex items-center justify-center">
               <svg className="w-8 h-8 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
               </svg>
             </div>
 
-            {/* Step 2 */}
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl" style={{ background: '#2563EB' }}>
                 2
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Perencanaan & Desain</h3>
-              <p className="text-slate-600 text-sm">Merancang arsitektur dan UI/UX terbaik</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">{t("workflow_step2")}</h3>
+              <p className="text-slate-600 text-sm">{t("workflow_step2_desc")}</p>
             </div>
 
-            {/* Arrow */}
             <div className="hidden md:flex items-center justify-center">
               <svg className="w-8 h-8 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
               </svg>
             </div>
 
-            {/* Step 3 */}
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl" style={{ background: '#06B6D4' }}>
                 3
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Development</h3>
-              <p className="text-slate-600 text-sm">Membangun aplikasi dengan standar tinggi</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">{t("workflow_step3")}</h3>
+              <p className="text-slate-600 text-sm">{t("workflow_step3_desc")}</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-4 gap-4 mt-8 md:max-w-3xl md:mx-auto">
-            {/* Step 4 */}
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl" style={{ background: '#0891B2' }}>
                 4
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Testing & Deployment</h3>
-              <p className="text-slate-600 text-sm">Pengujian menyeluruh dan peluncuran</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">{t("workflow_step4")}</h3>
+              <p className="text-slate-600 text-sm">{t("workflow_step4_desc")}</p>
             </div>
 
-            {/* Arrow */}
             <div className="hidden md:flex items-center justify-center">
               <svg className="w-8 h-8 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
               </svg>
             </div>
 
-            {/* Step 5 */}
             <div className="text-center p-6 md:col-span-2">
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl" style={{ background: '#1E3A8A' }}>
                 5
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Maintenance</h3>
-              <p className="text-slate-600 text-sm">Dukungan berkelanjutan pasca peluncuran</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-2">{t("workflow_step5")}</h3>
+              <p className="text-slate-600 text-sm">{t("workflow_step5_desc")}</p>
             </div>
           </div>
         </div>
@@ -269,9 +290,9 @@ export default function Home() {
       <section id="harga" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Paket Harga</h2>
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("pricing_title")}</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
-              Pilih paket yang sesuai dengan kebutuhan dan budget bisnis Anda. Semua paket sudah termasuk konsultasi gratis.
+              {t("pricing_subtitle")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -284,56 +305,34 @@ export default function Home() {
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Starter</h3>
-                <p className="text-slate-500 text-sm mt-1">Cocok untuk personal & UMKM</p>
+                <h3 className="text-xl font-bold text-slate-800">{t("pricing_starter")}</h3>
+                <p className="text-slate-500 text-sm mt-1">{t("pricing_starter_desc")}</p>
               </div>
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                  <span className="text-sm font-medium text-slate-500">{t("pricing_from")}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 500K</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Landing page 1 halaman
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Desain responsif (mobile-friendly)
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Konten statis (teks & gambar)
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Formulir kontak
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Integrasi WhatsApp
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  1x revisi desain
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Waktu pengerjaan 3-5 hari
-                </li>
+                {(["pricing_starter_f1", "pricing_starter_f2", "pricing_starter_f3", "pricing_starter_f4", "pricing_starter_f5", "pricing_starter_f6", "pricing_starter_f7"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                    {t(key)}
+                  </li>
+                ))}
               </ul>
               <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Starter" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
-                Pilih Starter
+                {t("pricing_starter_cta")}
               </a>
             </div>
 
             {/* Professional - Popular */}
             <div className="pricing-card pricing-popular bg-white rounded-2xl p-8 border-2 shadow-lg flex flex-col relative" style={{ borderColor: '#06B6D4' }}>
               <div className="pricing-badge absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-sm font-semibold" style={{ background: 'linear-gradient(135deg, #1E3A8A, #06B6D4)' }}>
-                Populer
+                {t("pricing_popular")}
               </div>
               <div className="mb-6">
                 <div className="icon-container w-12 h-12 rounded-xl flex items-center justify-center mb-4">
@@ -341,53 +340,27 @@ export default function Home() {
                     <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Professional</h3>
-                <p className="text-slate-500 text-sm mt-1">Untuk bisnis berkembang</p>
+                <h3 className="text-xl font-bold text-slate-800">{t("pricing_pro")}</h3>
+                <p className="text-slate-500 text-sm mt-1">{t("pricing_pro_desc")}</p>
               </div>
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                  <span className="text-sm font-medium text-slate-500">{t("pricing_from")}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 1.5 Jt</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Website hingga 5 halaman
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Desain UI/UX custom
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  CMS untuk kelola konten
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  SEO dasar (meta tags & sitemap)
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Integrasi media sosial
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Google Analytics
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  3x revisi desain
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Support 1 bulan gratis
-                </li>
+                {(["pricing_pro_f1", "pricing_pro_f2", "pricing_pro_f3", "pricing_pro_f4", "pricing_pro_f5", "pricing_pro_f6", "pricing_pro_f7", "pricing_pro_f8"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                    {t(key)}
+                  </li>
+                ))}
               </ul>
               <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Professional" target="_blank" rel="noopener noreferrer" className="btn-primary w-full py-3 rounded-xl font-semibold text-center block">
-                Pilih Professional
+                {t("pricing_pro_cta")}
               </a>
             </div>
 
@@ -399,53 +372,27 @@ export default function Home() {
                     <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Business</h3>
-                <p className="text-slate-500 text-sm mt-1">Untuk bisnis skala menengah</p>
+                <h3 className="text-xl font-bold text-slate-800">{t("pricing_biz")}</h3>
+                <p className="text-slate-500 text-sm mt-1">{t("pricing_biz_desc")}</p>
               </div>
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-medium text-slate-500">Mulai dari</span>
+                  <span className="text-sm font-medium text-slate-500">{t("pricing_from")}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Rp 3.5 Jt</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Website / Aplikasi Web dinamis
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Hingga 10 halaman
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Database & sistem login
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Admin dashboard
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  API integrasi pihak ketiga
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  SEO lanjutan & optimasi performa
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  5x revisi desain
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Support 3 bulan gratis
-                </li>
+                {(["pricing_biz_f1", "pricing_biz_f2", "pricing_biz_f3", "pricing_biz_f4", "pricing_biz_f5", "pricing_biz_f6", "pricing_biz_f7", "pricing_biz_f8"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                    {t(key)}
+                  </li>
+                ))}
               </ul>
               <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Business" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
-                Pilih Business
+                {t("pricing_biz_cta")}
               </a>
             </div>
 
@@ -457,55 +404,33 @@ export default function Home() {
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">Enterprise</h3>
-                <p className="text-slate-500 text-sm mt-1">Solusi lengkap & kustom</p>
+                <h3 className="text-xl font-bold text-slate-800">{t("pricing_ent")}</h3>
+                <p className="text-slate-500 text-sm mt-1">{t("pricing_ent_desc")}</p>
               </div>
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-medium text-slate-500">Harga</span>
+                  <span className="text-sm font-medium text-slate-500">{t("pricing_price_label")}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-3xl font-bold" style={{ color: '#1E3A8A' }}>Custom</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Aplikasi web / mobile / desktop
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Arsitektur & fitur fully custom
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Sistem kompleks (ERP, CRM, dll)
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Integrasi payment gateway
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Dedicated project manager
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Revisi unlimited selama development
-                </li>
-                <li className="flex items-start gap-2 text-slate-600 text-sm">
-                  <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                  Support & maintenance 6 bulan
-                </li>
+                {(["pricing_ent_f1", "pricing_ent_f2", "pricing_ent_f3", "pricing_ent_f4", "pricing_ent_f5", "pricing_ent_f6", "pricing_ent_f7"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <svg className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                    {t(key)}
+                  </li>
+                ))}
               </ul>
               <a href="https://wa.me/6282328579038?text=Halo,%20saya%20tertarik%20dengan%20paket%20Enterprise" target="_blank" rel="noopener noreferrer" className="btn-pricing-outline w-full py-3 rounded-xl font-semibold text-center block">
-                Hubungi Kami
+                {t("pricing_ent_cta")}
               </a>
             </div>
 
           </div>
           <p className="text-center text-slate-500 text-sm mt-10">
-            * Harga dapat disesuaikan tergantung kompleksitas dan fitur tambahan. Konsultasi gratis untuk estimasi lebih detail.
+            {t("pricing_note")}
           </p>
         </div>
       </section>
@@ -514,10 +439,9 @@ export default function Home() {
       <section id="tentang" className="py-24 hero-gradient">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center text-white mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Tentang PurwaWeb</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t("tentang_title")}</h2>
             <p className="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto">
-              PurwaWeb adalah penyedia jasa pembuatan website yang terpercaya, terjangkau, dan berkualitas.
-              Kami siap membantu UMKM dan bisnis di Indonesia membangun kehadiran digital yang profesional.
+              {t("tentang_desc")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -527,12 +451,10 @@ export default function Home() {
                 <svg className="w-8 h-8 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
                 </svg>
-                Visi
+                {t("tentang_visi")}
               </h3>
               <p className="text-blue-100 leading-relaxed">
-                Menjadi penyedia jasa pembuatan website yang terpercaya, terjangkau, dan berkualitas,
-                serta mampu membantu UMKM dan bisnis di Indonesia membangun kehadiran digital yang
-                profesional dan berkelanjutan.
+                {t("tentang_visi_desc")}
               </p>
             </div>
             {/* Misi */}
@@ -541,33 +463,15 @@ export default function Home() {
                 <svg className="w-8 h-8 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z" />
                 </svg>
-                Misi
+                {t("tentang_misi")}
               </h3>
               <ul className="text-blue-100 space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Menyediakan layanan pembuatan website profesional dengan harga yang terjangkau dan fleksibel.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Menghasilkan website yang fungsional, responsif, dan sesuai dengan kebutuhan setiap klien.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Mengutamakan kualitas desain, struktur, dan pengalaman pengguna.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Memberikan proses kerja yang transparan, terstruktur, dan tepat waktu.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Menyediakan konsultasi dan dukungan teknis untuk membantu klien memahami dan mengelola website mereka.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
-                  <span>Menjadi mitra digital yang dapat diandalkan bagi UMKM, bisnis, dan personal.</span>
-                </li>
+                {(["tentang_misi_1", "tentang_misi_2", "tentang_misi_3", "tentang_misi_4", "tentang_misi_5", "tentang_misi_6"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2">
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>{t(key)}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -577,10 +481,9 @@ export default function Home() {
       {/* Contact CTA */}
       <section id="kontak" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">Siap Memulai Project Anda?</h2>
+          <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("kontak_title")}</h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8 mb-10">
-            Konsultasikan kebutuhan aplikasi Anda dengan tim kami secara gratis.
-            Kami siap membantu mewujudkan ide Anda menjadi solusi digital yang nyata.
+            {t("kontak_subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
@@ -590,7 +493,7 @@ export default function Home() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
-              Our Email
+              {t("kontak_email")}
             </a>
             <a
               href="https://wa.me/6282328579038"
@@ -618,20 +521,20 @@ export default function Home() {
                 <span className="text-2xl font-bold">Purwa<span style={{ color: '#06B6D4' }}>Web</span></span>
               </a>
               <p className="text-slate-400">
-                Partner digital terpercaya untuk solusi teknologi berkelanjutan
+                {t("footer_tagline")}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Layanan</h4>
+              <h4 className="font-semibold mb-4">{t("footer_layanan")}</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">Web Development</a></li>
+                <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">{t("layanan_web")}</a></li>
                 <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">Mobile App</a></li>
-                <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">Desktop Application</a></li>
+                <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">{t("layanan_desktop")}</a></li>
                 <li><a href="#layanan" className="hover:text-cyan-400 transition-colors">Maintenance</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Kontak</h4>
+              <h4 className="font-semibold mb-4">{t("footer_kontak")}</h4>
               <ul className="space-y-2 text-slate-400">
                 <li className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -649,7 +552,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; 2025 PurwaWeb. All rights reserved.</p>
+            <p>{t("footer_copyright")}</p>
           </div>
         </div>
       </footer>

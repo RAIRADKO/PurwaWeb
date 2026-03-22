@@ -208,3 +208,25 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
 }
+
+/* Language Toggle */
+.lang-toggle {
+  background: white;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--background-alt);
+}
+
+.lang-label {
+  color: var(--foreground-muted);
+  transition: color 0.2s ease;
+}
+
+.lang-label.active {
+  color: var(--cyan-accent);
+  font-weight: 700;
+}
