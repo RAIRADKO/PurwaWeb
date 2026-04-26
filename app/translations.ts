@@ -6,6 +6,7 @@ export const translations = {
   nav_keunggulan: { id: "Keunggulan", en: "Why Us" },
   nav_workflow: { id: "Alur Kerja", en: "Workflow" },
   nav_harga: { id: "Harga", en: "Pricing" },
+  nav_testimoni: { id: "Testimoni", en: "Testimonials" },
   nav_tentang: { id: "Tentang Kami", en: "About Us" },
   nav_kontak: { id: "Hubungi Kami", en: "Contact Us" },
 
@@ -207,6 +208,49 @@ export const translations = {
   tentang_misi_6: {
     id: "Menjadi mitra digital yang dapat diandalkan bagi UMKM, bisnis, dan personal.",
     en: "Becoming a reliable digital partner for SMEs, businesses, and individuals.",
+  },
+
+  // Testimoni
+  testimoni_title: { id: "Apa Kata Klien Kami", en: "What Our Clients Say" },
+  testimoni_subtitle: {
+    id: "Kepuasan klien adalah prioritas utama kami. Berikut testimoni dari mereka yang telah mempercayakan proyek digitalnya kepada PurwaWeb.",
+    en: "Client satisfaction is our top priority. Here are testimonials from those who have entrusted their digital projects to PurwaWeb.",
+  },
+  testimoni_1_name: { id: "Budi Santoso", en: "Budi Santoso" },
+  testimoni_1_role: { id: "CEO, TokoBaju.id", en: "CEO, TokoBaju.id" },
+  testimoni_1_text: {
+    id: "PurwaWeb membantu kami membangun toko online yang modern dan responsif. Penjualan meningkat 40% setelah website baru diluncurkan. Tim yang sangat profesional!",
+    en: "PurwaWeb helped us build a modern and responsive online store. Sales increased by 40% after the new website launched. A very professional team!",
+  },
+  testimoni_2_name: { id: "Sari Dewi", en: "Sari Dewi" },
+  testimoni_2_role: { id: "Owner, Klinik Sehat Sentosa", en: "Owner, Klinik Sehat Sentosa" },
+  testimoni_2_text: {
+    id: "Proses pengerjaannya cepat dan hasilnya melebihi ekspektasi. Website klinik kami sekarang terlihat sangat profesional dan pasien mudah mendaftar online.",
+    en: "The development process was fast and the results exceeded expectations. Our clinic website now looks very professional and patients can easily register online.",
+  },
+  testimoni_3_name: { id: "Ahmad Rizki", en: "Ahmad Rizki" },
+  testimoni_3_role: { id: "Founder, EduTech Nusantara", en: "Founder, EduTech Nusantara" },
+  testimoni_3_text: {
+    id: "Aplikasi e-learning yang dibuat PurwaWeb sangat intuitif. Siswa dan guru bisa menggunakannya dengan mudah. Support setelah project selesai juga luar biasa.",
+    en: "The e-learning application built by PurwaWeb is very intuitive. Students and teachers can use it easily. Post-project support is also outstanding.",
+  },
+  testimoni_4_name: { id: "Linda Permata", en: "Linda Permata" },
+  testimoni_4_role: { id: "Marketing Director, PT Maju Bersama", en: "Marketing Director, PT Maju Bersama" },
+  testimoni_4_text: {
+    id: "Kami sangat puas dengan company profile yang dibuat. Desainnya elegan dan SEO-nya bagus. Sekarang website kami selalu muncul di halaman pertama Google.",
+    en: "We are very satisfied with the company profile created. The design is elegant and the SEO is great. Now our website always appears on the first page of Google.",
+  },
+  testimoni_5_name: { id: "Rendra Pratama", en: "Rendra Pratama" },
+  testimoni_5_role: { id: "Owner, Warung Kopi Nusantara", en: "Owner, Warung Kopi Nusantara" },
+  testimoni_5_text: {
+    id: "Dengan budget yang terbatas, PurwaWeb berhasil membuat website yang keren untuk warung kopi saya. Pelanggan jadi lebih mudah melihat menu dan lokasi kami.",
+    en: "With a limited budget, PurwaWeb managed to create an amazing website for my coffee shop. Customers can now easily view our menu and location.",
+  },
+  testimoni_6_name: { id: "Dina Fitriani", en: "Dina Fitriani" },
+  testimoni_6_role: { id: "HR Manager, StartupHub", en: "HR Manager, StartupHub" },
+  testimoni_6_text: {
+    id: "Sistem HR internal yang dikembangkan PurwaWeb membantu kami menghemat waktu 60% dalam proses administrasi karyawan. Investasi yang sangat worth it!",
+    en: "The internal HR system developed by PurwaWeb helped us save 60% of time in employee administration processes. A very worthwhile investment!",
   },
 
   // Contact

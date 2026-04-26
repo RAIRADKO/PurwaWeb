@@ -26,6 +26,7 @@ export default function Home() {
               <a href="#keunggulan" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_keunggulan")}</a>
               <a href="#workflow" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_workflow")}</a>
               <a href="#harga" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_harga")}</a>
+              <a href="#testimoni" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_testimoni")}</a>
               <a href="#tentang" className="text-slate-600 hover:text-[#1E3A8A] transition-colors font-medium">{t("nav_tentang")}</a>
               <a href="#kontak" className="btn-primary px-6 py-2.5 rounded-full font-semibold">
                 {t("nav_kontak")}
@@ -474,6 +475,54 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimoni */}
+      <section id="testimoni" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">{t("testimoni_title")}</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto mt-8">
+              {t("testimoni_subtitle")}
+            </p>
+          </div>
+        </div>
+        <div className="testimoni-wrapper">
+          <div className="testimoni-track">
+            {[0, 1].map((setIndex) =>
+              ([
+                { nameKey: "testimoni_1_name", textKey: "testimoni_1_text", initials: "BS", gradient: "linear-gradient(135deg, #1E3A8A, #2563EB)" },
+                { nameKey: "testimoni_2_name", textKey: "testimoni_2_text", initials: "SD", gradient: "linear-gradient(135deg, #06B6D4, #0891B2)" },
+                { nameKey: "testimoni_3_name", textKey: "testimoni_3_text", initials: "AR", gradient: "linear-gradient(135deg, #7C3AED, #6D28D9)" },
+                { nameKey: "testimoni_4_name", textKey: "testimoni_4_text", initials: "LP", gradient: "linear-gradient(135deg, #EC4899, #DB2777)" },
+                { nameKey: "testimoni_5_name", textKey: "testimoni_5_text", initials: "RP", gradient: "linear-gradient(135deg, #F59E0B, #D97706)" },
+                { nameKey: "testimoni_6_name", textKey: "testimoni_6_text", initials: "DF", gradient: "linear-gradient(135deg, #10B981, #059669)" },
+              ] as const).map((item, i) => (
+                <div key={`${setIndex}-${i}`} className="testimoni-card">
+                  <span className="quote-icon">&ldquo;</span>
+                  <div className="testimoni-stars">
+                    {[...Array(5)].map((_, j) => (
+                      <svg key={j} viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="testimoni-text">
+                    {t(item.textKey)}
+                  </p>
+                  <div className="testimoni-author">
+                    <div className="testimoni-avatar" style={{ background: item.gradient }}>
+                      {item.initials}
+                    </div>
+                    <div className="testimoni-author-info">
+                      <h4>{t(item.nameKey)}</h4>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
